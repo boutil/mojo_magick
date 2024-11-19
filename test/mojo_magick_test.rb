@@ -188,7 +188,7 @@ class MojoMagickTest < MiniTest::Test
   rescue MojoMagick::MojoFailed => e
     assert e.message.include?("unrecognized option"),
            "Unable to find ImageMagick commandline error in the message"
-    assert e.message.include?("convert.c/ConvertImageCommand"),
+    assert e.message =~ /(convert|deprecate)\.c\/ConvertImageCommand/,
            "Unable to find ImageMagick commandline error in the message"
   end
 
